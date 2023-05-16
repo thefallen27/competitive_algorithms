@@ -1,0 +1,6 @@
+Maximum profit for section 0:
+220
+Maximum profit for section 1:
+160
+Maximum profit for section 2:
+255
