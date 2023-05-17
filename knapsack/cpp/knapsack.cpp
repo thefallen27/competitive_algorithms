@@ -10,7 +10,7 @@ KnapSack(int ks_weight, const std::vector<int>& iweight, const std::vector<int>&
 
     for (int i = 0; i < iweight.size(); ++i)
     {
-        for (int w = ks_weight; w >= iweight[i]; --w) 
+        for (long long int w = ks_weight; w >= iweight[i]; --w) 
         {
             max_value[w] = std::max(max_value[w], max_value[w - iweight[i]] + iprofit[i]);
         }
