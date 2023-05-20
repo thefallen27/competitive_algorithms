@@ -22,6 +22,20 @@ fn knapsack(ks_weight: usize, items: &[Item]) -> usize {
         .unwrap_or_default()
 }
 
+fn knapsack_dynamic(ks_weight: usize, items: &[Item]) -> usize {
+    let mut results = vec![0; ks_weight + 1];
+
+    for item in items {
+        for weight in (item.weight..=ks_weight).rev() {
+            if weight >= item.weight {
+                results[weight] = results[weight].max(results[weight - item.weight] + item.value);
+            }
+        }
+    }
+
+    results[ks_weight]
+}
+
 fn main() {
     let file = Path::new("../input.txt");
     let input = fs::read_to_string(file).expect("Failed to read file");
@@ -52,9 +66,17 @@ fn main() {
 
     for (index, item) in items.iter().enumerate() {
         println!(
-            "Maximum profit for section: {}: \n{}",
+            "Maximum profit with recursion for section: {}: \n{}",
             index,
             knapsack(item.0, &item.1)
+        );
+    }
+
+    for (index, item) in items.iter().enumerate() {
+        println!(
+            "Maximum profit with dynamic programming for section: {}: \n{}",
+            index,
+            knapsack_dynamic(item.0, &item.1)
         );
     }
 }
