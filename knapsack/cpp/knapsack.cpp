@@ -24,7 +24,7 @@ int main()
     std::ios::sync_with_stdio(false);
     std::cin.tie(NULL);
 
-    std::ifstream input_file("input.txt");
+    std::ifstream input_file("knapsack_input.txt");
 
     if (!input_file) 
     {

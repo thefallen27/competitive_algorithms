@@ -37,7 +37,7 @@ fn knapsack_dynamic(ks_weight: usize, items: &[Item]) -> usize {
 }
 
 fn main() {
-    let file = Path::new("../input.txt");
+    let file = Path::new("../knapsack_input.txt");
     let input = fs::read_to_string(file).expect("Failed to read file");
 
     let items: Vec<(usize, Vec<Item>)> = input
