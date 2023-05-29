@@ -61,7 +61,7 @@ int main()
 {
     std::ios::sync_with_stdio(false);
     std::cin.tie(NULL);
-    std::string filename = "input.txt";
+    std::string filename = "dfs_input.txt";
 
     std::vector<std::vector<int>> graph = ReadGraphFromFile(filename);
 
