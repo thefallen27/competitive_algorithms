@@ -1,0 +1,33 @@
+Enter starting node: 0
+Enter end node: 99
+Shortest path: 0 3 13 53 62 99
+Shortest distance: 21
+
+Enter starting node: 8
+Enter end node: 66
+Shortest path: 8 35 66
+Shortest distance: 4
+
+Enter starting node: 4
+Enter end node: 88
+Shortest path: 4 18 74 71 59 88
+Shortest distance: 34
+
+Enter starting node: 12
+Enter end node: 64
+Shortest path: 12 49 46 34 64
+Shortest distance: 33
+
+Enter starting node: 7
+Enter end node: 77
+Shortest path: 7 32 56 77
+Shortest distance: 6
+
+Enter starting node: 1
+Enter end node: 23
+Shortest path: 1 5 23
+Shortest distance: 7
+
+Enter starting node: 5
+Enter end node: 78
+No path exists between the specified nodes.
