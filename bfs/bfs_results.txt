@@ -30,4 +30,5 @@ Shortest distance: 7
 
 Enter starting node: 5
 Enter end node: 78
-No path exists between the specified nodes.
+Shortest path: 5 21 85 38 78
+Shortest distance: 17
