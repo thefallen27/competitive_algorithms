@@ -37,7 +37,6 @@ fn main() {
         graph[node].push(neighbor);
         graph[neighbor].push(node);
     }
-    println!("graph: {graph:?}");
 
     for start_node in [4, 5, 3, 2, 1, 0].iter() {
         println!("Starting node: {start_node}");
