@@ -1,0 +1,621 @@
+Directional graph results:
+--------------------------
+Enter the starting node: 3
+Shortest paths from node 3:
+No path from node 3 to node 0
+No path from node 3 to node 1
+No path from node 3 to node 2
+Node 3: Distance = 0
+No path from node 3 to node 4
+No path from node 3 to node 5
+No path from node 3 to node 6
+No path from node 3 to node 7
+No path from node 3 to node 8
+No path from node 3 to node 9
+No path from node 3 to node 10
+No path from node 3 to node 11
+No path from node 3 to node 12
+Node 13: Distance = 4
+Node 14: Distance = 1
+Node 15: Distance = 6
+Node 16: Distance = 8
+No path from node 3 to node 17
+No path from node 3 to node 18
+No path from node 3 to node 19
+No path from node 3 to node 20
+No path from node 3 to node 21
+No path from node 3 to node 22
+No path from node 3 to node 23
+No path from node 3 to node 24
+Node 25: Distance = 17
+Node 26: Distance = 21
+Node 27: Distance = 20
+Node 28: Distance = 19
+Node 29: Distance = 18
+Node 30: Distance = 14
+Node 31: Distance = 13
+Node 32: Distance = 14
+Node 33: Distance = 26
+Node 34: Distance = 25
+Node 35: Distance = 24
+Node 36: Distance = 23
+Node 37: Distance = 22
+Node 38: Distance = 18
+Node 39: Distance = 17
+Node 40: Distance = 16
+Node 41: Distance = 15
+Node 42: Distance = 16
+Node 43: Distance = 15
+Node 44: Distance = 14
+Node 45: Distance = 13
+Node 46: Distance = 14
+Node 47: Distance = 15
+Node 48: Distance = 17
+Node 49: Distance = 19
+Node 50: Distance = 23
+Node 51: Distance = 25
+Node 52: Distance = 24
+Node 53: Distance = 9
+Node 54: Distance = 5
+Node 55: Distance = 6
+Node 56: Distance = 7
+Node 57: Distance = 8
+Node 58: Distance = 9
+Node 59: Distance = 10
+Node 60: Distance = 11
+Node 61: Distance = 14
+Node 62: Distance = 10
+Node 63: Distance = 15
+Node 64: Distance = 12
+Node 65: Distance = 12
+Node 66: Distance = 9
+Node 67: Distance = 11
+Node 68: Distance = 13
+Node 69: Distance = 14
+Node 70: Distance = 14
+Node 71: Distance = 13
+Node 72: Distance = 12
+Node 73: Distance = 11
+Node 74: Distance = 11
+Node 75: Distance = 10
+Node 76: Distance = 9
+Node 77: Distance = 8
+Node 78: Distance = 22
+Node 79: Distance = 21
+Node 80: Distance = 20
+Node 81: Distance = 19
+Node 82: Distance = 18
+Node 83: Distance = 17
+Node 84: Distance = 18
+Node 85: Distance = 17
+Node 86: Distance = 17
+Node 87: Distance = 16
+Node 88: Distance = 15
+Node 89: Distance = 14
+Node 90: Distance = 14
+Node 91: Distance = 13
+Node 92: Distance = 12
+Node 93: Distance = 17
+Node 94: Distance = 28
+Node 95: Distance = 27
+Node 96: Distance = 26
+Node 97: Distance = 25
+Node 98: Distance = 20
+Node 99: Distance = 19
+
+Enter the starting node: 15
+Shortest paths from node 15:
+No path from node 15 to node 0
+No path from node 15 to node 1
+No path from node 15 to node 2
+No path from node 15 to node 3
+No path from node 15 to node 4
+No path from node 15 to node 5
+No path from node 15 to node 6
+No path from node 15 to node 7
+No path from node 15 to node 8
+No path from node 15 to node 9
+No path from node 15 to node 10
+No path from node 15 to node 11
+No path from node 15 to node 12
+No path from node 15 to node 13
+No path from node 15 to node 14
+Node 15: Distance = 0
+No path from node 15 to node 16
+No path from node 15 to node 17
+No path from node 15 to node 18
+No path from node 15 to node 19
+No path from node 15 to node 20
+No path from node 15 to node 21
+No path from node 15 to node 22
+No path from node 15 to node 23
+No path from node 15 to node 24
+Node 25: Distance = 19
+Node 26: Distance = 15
+Node 27: Distance = 14
+Node 28: Distance = 13
+Node 29: Distance = 12
+Node 30: Distance = 8
+Node 31: Distance = 7
+Node 32: Distance = 15
+Node 33: Distance = 20
+Node 34: Distance = 21
+Node 35: Distance = 20
+Node 36: Distance = 19
+Node 37: Distance = 18
+Node 38: Distance = 16
+Node 39: Distance = 15
+Node 40: Distance = 14
+Node 41: Distance = 16
+Node 42: Distance = 17
+Node 43: Distance = 16
+Node 44: Distance = 15
+Node 45: Distance = 14
+Node 46: Distance = 10
+Node 47: Distance = 9
+Node 48: Distance = 11
+Node 49: Distance = 13
+Node 50: Distance = 17
+Node 51: Distance = 19
+Node 52: Distance = 21
+Node 53: Distance = 22
+Node 54: Distance = 21
+Node 55: Distance = 20
+Node 56: Distance = 19
+Node 57: Distance = 18
+Node 58: Distance = 24
+Node 59: Distance = 23
+Node 60: Distance = 22
+Node 61: Distance = 15
+Node 62: Distance = 12
+Node 63: Distance = 9
+Node 64: Distance = 6
+Node 65: Distance = 25
+Node 66: Distance = 21
+Node 67: Distance = 23
+Node 68: Distance = 25
+Node 69: Distance = 26
+Node 70: Distance = 24
+Node 71: Distance = 23
+Node 72: Distance = 22
+Node 73: Distance = 21
+Node 74: Distance = 23
+Node 75: Distance = 22
+Node 76: Distance = 21
+Node 77: Distance = 20
+Node 78: Distance = 20
+Node 79: Distance = 19
+Node 80: Distance = 18
+Node 81: Distance = 17
+Node 82: Distance = 30
+Node 83: Distance = 29
+Node 84: Distance = 28
+Node 85: Distance = 27
+Node 86: Distance = 23
+Node 87: Distance = 22
+Node 88: Distance = 21
+Node 89: Distance = 20
+Node 90: Distance = 21
+Node 91: Distance = 20
+Node 92: Distance = 19
+Node 93: Distance = 18
+Node 94: Distance = 29
+Node 95: Distance = 28
+Node 96: Distance = 27
+Node 97: Distance = 26
+Node 98: Distance = 22
+Node 99: Distance = 21
+
+Enter the starting node: 42
+Shortest paths from node 42:
+No path from node 42 to node 0
+No path from node 42 to node 1
+No path from node 42 to node 2
+No path from node 42 to node 3
+No path from node 42 to node 4
+No path from node 42 to node 5
+No path from node 42 to node 6
+No path from node 42 to node 7
+No path from node 42 to node 8
+No path from node 42 to node 9
+No path from node 42 to node 10
+No path from node 42 to node 11
+No path from node 42 to node 12
+No path from node 42 to node 13
+No path from node 42 to node 14
+No path from node 42 to node 15
+No path from node 42 to node 16
+No path from node 42 to node 17
+No path from node 42 to node 18
+No path from node 42 to node 19
+No path from node 42 to node 20
+No path from node 42 to node 21
+No path from node 42 to node 22
+No path from node 42 to node 23
+No path from node 42 to node 24
+Node 25: Distance = 28
+Node 26: Distance = 26
+Node 27: Distance = 25
+Node 28: Distance = 24
+Node 29: Distance = 23
+Node 30: Distance = 21
+Node 31: Distance = 20
+Node 32: Distance = 19
+Node 33: Distance = 33
+Node 34: Distance = 32
+Node 35: Distance = 31
+Node 36: Distance = 30
+Node 37: Distance = 29
+Node 38: Distance = 27
+Node 39: Distance = 26
+Node 40: Distance = 25
+Node 41: Distance = 24
+Node 42: Distance = 0
+Node 43: Distance = 20
+Node 44: Distance = 19
+Node 45: Distance = 18
+Node 46: Distance = 23
+Node 47: Distance = 22
+Node 48: Distance = 24
+Node 49: Distance = 26
+Node 50: Distance = 30
+Node 51: Distance = 32
+Node 52: Distance = 34
+Node 53: Distance = 35
+Node 54: Distance = 21
+Node 55: Distance = 20
+Node 56: Distance = 19
+Node 57: Distance = 18
+Node 58: Distance = 31
+Node 59: Distance = 30
+Node 60: Distance = 29
+Node 61: Distance = 28
+Node 62: Distance = 36
+Node 63: Distance = 38
+Node 64: Distance = 37
+Node 65: Distance = 36
+Node 66: Distance = 32
+Node 67: Distance = 32
+Node 68: Distance = 31
+Node 69: Distance = 30
+Node 70: Distance = 28
+Node 71: Distance = 27
+Node 72: Distance = 26
+Node 73: Distance = 25
+Node 74: Distance = 23
+Node 75: Distance = 22
+Node 76: Distance = 21
+Node 77: Distance = 20
+Node 78: Distance = 27
+Node 79: Distance = 26
+Node 80: Distance = 25
+Node 81: Distance = 28
+Node 82: Distance = 30
+Node 83: Distance = 21
+Node 84: Distance = 20
+Node 85: Distance = 19
+Node 86: Distance = 17
+Node 87: Distance = 33
+Node 88: Distance = 31
+Node 89: Distance = 14
+Node 90: Distance = 28
+Node 91: Distance = 27
+Node 92: Distance = 27
+Node 93: Distance = 26
+Node 94: Distance = 15
+Node 95: Distance = 14
+Node 96: Distance = 13
+Node 97: Distance = 12
+Node 98: Distance = 31
+Node 99: Distance = 30
+
+Undirected graph results:
+-------------------------
+Enter the starting node: 3
+Shortest paths from node 3:
+Node 0: Distance = 2
+Node 1: Distance = 9
+Node 2: Distance = 16
+Node 3: Distance = 0
+Node 4: Distance = 5
+Node 5: Distance = 13
+Node 6: Distance = 22
+Node 7: Distance = 12
+Node 8: Distance = 11
+Node 9: Distance = 20
+Node 10: Distance = 17
+Node 11: Distance = 15
+Node 12: Distance = 20
+Node 13: Distance = 4
+Node 14: Distance = 1
+Node 15: Distance = 6
+Node 16: Distance = 8
+Node 17: Distance = 18
+Node 18: Distance = 16
+Node 19: Distance = 11
+Node 20: Distance = 10
+Node 21: Distance = 14
+Node 22: Distance = 15
+Node 23: Distance = 16
+Node 24: Distance = 17
+Node 25: Distance = 17
+Node 26: Distance = 20
+Node 27: Distance = 16
+Node 28: Distance = 17
+Node 29: Distance = 18
+Node 30: Distance = 14
+Node 31: Distance = 13
+Node 32: Distance = 11
+Node 33: Distance = 24
+Node 34: Distance = 16
+Node 35: Distance = 10
+Node 36: Distance = 17
+Node 37: Distance = 13
+Node 38: Distance = 17
+Node 39: Distance = 17
+Node 40: Distance = 16
+Node 41: Distance = 15
+Node 42: Distance = 16
+Node 43: Distance = 15
+Node 44: Distance = 14
+Node 45: Distance = 12
+Node 46: Distance = 14
+Node 47: Distance = 15
+Node 48: Distance = 15
+Node 49: Distance = 16
+Node 50: Distance = 19
+Node 51: Distance = 14
+Node 52: Distance = 14
+Node 53: Distance = 9
+Node 54: Distance = 5
+Node 55: Distance = 6
+Node 56: Distance = 7
+Node 57: Distance = 8
+Node 58: Distance = 9
+Node 59: Distance = 10
+Node 60: Distance = 11
+Node 61: Distance = 14
+Node 62: Distance = 10
+Node 63: Distance = 15
+Node 64: Distance = 12
+Node 65: Distance = 12
+Node 66: Distance = 9
+Node 67: Distance = 11
+Node 68: Distance = 13
+Node 69: Distance = 14
+Node 70: Distance = 13
+Node 71: Distance = 13
+Node 72: Distance = 12
+Node 73: Distance = 11
+Node 74: Distance = 11
+Node 75: Distance = 10
+Node 76: Distance = 9
+Node 77: Distance = 8
+Node 78: Distance = 15
+Node 79: Distance = 14
+Node 80: Distance = 17
+Node 81: Distance = 18
+Node 82: Distance = 18
+Node 83: Distance = 15
+Node 84: Distance = 16
+Node 85: Distance = 17
+Node 86: Distance = 13
+Node 87: Distance = 15
+Node 88: Distance = 15
+Node 89: Distance = 12
+Node 90: Distance = 12
+Node 91: Distance = 13
+Node 92: Distance = 12
+Node 93: Distance = 14
+Node 94: Distance = 21
+Node 95: Distance = 19
+Node 96: Distance = 17
+Node 97: Distance = 14
+Node 98: Distance = 13
+Node 99: Distance = 19
+
+Enter the starting node: 15
+Shortest paths from node 15:
+Node 0: Distance = 8
+Node 1: Distance = 15
+Node 2: Distance = 22
+Node 3: Distance = 6
+Node 4: Distance = 11
+Node 5: Distance = 13
+Node 6: Distance = 18
+Node 7: Distance = 11
+Node 8: Distance = 17
+Node 9: Distance = 18
+Node 10: Distance = 18
+Node 11: Distance = 12
+Node 12: Distance = 22
+Node 13: Distance = 10
+Node 14: Distance = 7
+Node 15: Distance = 0
+Node 16: Distance = 14
+Node 17: Distance = 24
+Node 18: Distance = 22
+Node 19: Distance = 17
+Node 20: Distance = 16
+Node 21: Distance = 12
+Node 22: Distance = 15
+Node 23: Distance = 16
+Node 24: Distance = 17
+Node 25: Distance = 19
+Node 26: Distance = 15
+Node 27: Distance = 14
+Node 28: Distance = 13
+Node 29: Distance = 12
+Node 30: Distance = 8
+Node 31: Distance = 7
+Node 32: Distance = 10
+Node 33: Distance = 20
+Node 34: Distance = 11
+Node 35: Distance = 14
+Node 36: Distance = 19
+Node 37: Distance = 18
+Node 38: Distance = 16
+Node 39: Distance = 15
+Node 40: Distance = 14
+Node 41: Distance = 16
+Node 42: Distance = 14
+Node 43: Distance = 13
+Node 44: Distance = 12
+Node 45: Distance = 9
+Node 46: Distance = 10
+Node 47: Distance = 9
+Node 48: Distance = 11
+Node 49: Distance = 10
+Node 50: Distance = 17
+Node 51: Distance = 19
+Node 52: Distance = 17
+Node 53: Distance = 13
+Node 54: Distance = 11
+Node 55: Distance = 12
+Node 56: Distance = 13
+Node 57: Distance = 13
+Node 58: Distance = 15
+Node 59: Distance = 16
+Node 60: Distance = 17
+Node 61: Distance = 15
+Node 62: Distance = 12
+Node 63: Distance = 9
+Node 64: Distance = 6
+Node 65: Distance = 15
+Node 66: Distance = 15
+Node 67: Distance = 11
+Node 68: Distance = 11
+Node 69: Distance = 20
+Node 70: Distance = 18
+Node 71: Distance = 16
+Node 72: Distance = 18
+Node 73: Distance = 17
+Node 74: Distance = 17
+Node 75: Distance = 16
+Node 76: Distance = 15
+Node 77: Distance = 14
+Node 78: Distance = 19
+Node 79: Distance = 19
+Node 80: Distance = 18
+Node 81: Distance = 17
+Node 82: Distance = 14
+Node 83: Distance = 9
+Node 84: Distance = 22
+Node 85: Distance = 16
+Node 86: Distance = 10
+Node 87: Distance = 13
+Node 88: Distance = 15
+Node 89: Distance = 17
+Node 90: Distance = 18
+Node 91: Distance = 19
+Node 92: Distance = 18
+Node 93: Distance = 18
+Node 94: Distance = 21
+Node 95: Distance = 19
+Node 96: Distance = 17
+Node 97: Distance = 15
+Node 98: Distance = 19
+Node 99: Distance = 21
+
+Enter the starting node: 42
+Shortest paths from node 42:
+Node 0: Distance = 18
+Node 1: Distance = 11
+Node 2: Distance = 10
+Node 3: Distance = 16
+Node 4: Distance = 21
+Node 5: Distance = 7
+Node 6: Distance = 16
+Node 7: Distance = 7
+Node 8: Distance = 11
+Node 9: Distance = 16
+Node 10: Distance = 5
+Node 11: Distance = 8
+Node 12: Distance = 20
+Node 13: Distance = 13
+Node 14: Distance = 16
+Node 15: Distance = 14
+Node 16: Distance = 8
+Node 17: Distance = 25
+Node 18: Distance = 17
+Node 19: Distance = 14
+Node 20: Distance = 17
+Node 21: Distance = 6
+Node 22: Distance = 9
+Node 23: Distance = 10
+Node 24: Distance = 11
+Node 25: Distance = 15
+Node 26: Distance = 13
+Node 27: Distance = 12
+Node 28: Distance = 11
+Node 29: Distance = 9
+Node 30: Distance = 8
+Node 31: Distance = 7
+Node 32: Distance = 6
+Node 33: Distance = 20
+Node 34: Distance = 13
+Node 35: Distance = 8
+Node 36: Distance = 17
+Node 37: Distance = 16
+Node 38: Distance = 14
+Node 39: Distance = 13
+Node 40: Distance = 12
+Node 41: Distance = 7
+Node 42: Distance = 0
+Node 43: Distance = 7
+Node 44: Distance = 6
+Node 45: Distance = 5
+Node 46: Distance = 10
+Node 47: Distance = 9
+Node 48: Distance = 6
+Node 49: Distance = 10
+Node 50: Distance = 17
+Node 51: Distance = 15
+Node 52: Distance = 14
+Node 53: Distance = 17
+Node 54: Distance = 12
+Node 55: Distance = 11
+Node 56: Distance = 10
+Node 57: Distance = 9
+Node 58: Distance = 15
+Node 59: Distance = 11
+Node 60: Distance = 11
+Node 61: Distance = 14
+Node 62: Distance = 18
+Node 63: Distance = 12
+Node 64: Distance = 8
+Node 65: Distance = 12
+Node 66: Distance = 9
+Node 67: Distance = 5
+Node 68: Distance = 11
+Node 69: Distance = 17
+Node 70: Distance = 14
+Node 71: Distance = 13
+Node 72: Distance = 13
+Node 73: Distance = 12
+Node 74: Distance = 14
+Node 75: Distance = 13
+Node 76: Distance = 12
+Node 77: Distance = 11
+Node 78: Distance = 13
+Node 79: Distance = 12
+Node 80: Distance = 16
+Node 81: Distance = 15
+Node 82: Distance = 11
+Node 83: Distance = 9
+Node 84: Distance = 18
+Node 85: Distance = 10
+Node 86: Distance = 4
+Node 87: Distance = 7
+Node 88: Distance = 9
+Node 89: Distance = 11
+Node 90: Distance = 12
+Node 91: Distance = 11
+Node 92: Distance = 10
+Node 93: Distance = 9
+Node 94: Distance = 15
+Node 95: Distance = 13
+Node 96: Distance = 11
+Node 97: Distance = 9
+Node 98: Distance = 13
+Node 99: Distance = 17
