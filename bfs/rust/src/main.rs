@@ -52,9 +52,9 @@ fn main() {
         let mut line_split = i.split(' ');
         let source = line_split.next().unwrap().parse::<usize>().unwrap();
         let destination = line_split.next().unwrap().parse::<usize>().unwrap();
-        let wheight = line_split.next().unwrap().parse::<usize>().unwrap();
+        let weight = line_split.next().unwrap().parse::<usize>().unwrap();
 
-        graph[source].push((destination, wheight));
+        graph[source].push((destination, weight));
     }
 
     for pair_node in [
