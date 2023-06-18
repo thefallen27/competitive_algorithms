@@ -137,7 +137,7 @@ private:
 
 int main()
 {
-	std::ios::sync_with_stdio(false);
+    std::ios::sync_with_stdio(false);
     std::cin.tie(NULL);
     std::ifstream input_file("aho_corasick_input.txt");
 
