@@ -27,11 +27,10 @@ fn dijkstra(start_node: usize, graph: &[Vec<(usize, usize)>]) -> Vec<usize> {
 }
 
 fn main() {
-    let file = Path::new("../../dijkstra_input.txt");
+    let file = Path::new("../dijkstra_input.txt");
     let input = fs::read_to_string(file).expect("Failed to read file");
 
-    let (nodes, _edges) = input.lines().next().unwrap().split_once(' ').unwrap();
-    let nodes = nodes.parse::<usize>().unwrap();
+    let nodes = input.lines().next().unwrap().parse::<usize>().unwrap();
 
     let mut graph: Vec<Vec<_>> = vec![vec![]; nodes];
     for i in input.lines().skip(1) {
