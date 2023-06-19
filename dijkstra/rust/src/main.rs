@@ -41,7 +41,7 @@ fn main() {
 
         graph[source].push((destination, weight));
         // Uncomment below line if you want the graph to be undirected
-        //graph[destination].push((source, wheight));
+        // graph[destination].push((source, weight));
     }
 
     for start_node in [3, 15, 42] {
