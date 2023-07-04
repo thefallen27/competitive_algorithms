@@ -1,0 +1,8 @@
+Enter a number: 8
+Prime factors: 2 2 2
+
+Enter a number: 1288889821781
+Prime factors: 991723 1299647
+
+Enter a number: 340332181802372051
+Prime factors: 353868013 961748927
