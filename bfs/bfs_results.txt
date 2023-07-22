@@ -10,8 +10,8 @@ Shortest distance: 4
 
 Enter starting node: 4
 Enter end node: 88
-Shortest path: 4 18 74 71 59 88
-Shortest distance: 34
+Shortest path: 4 19 78 88
+Shortest distance: 17
 
 Enter starting node: 12
 Enter end node: 64
