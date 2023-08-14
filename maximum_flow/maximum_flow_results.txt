@@ -1,0 +1,32 @@
+Results
+=======
+Ford - Fulkerson:
+Enter the source node: 0
+Enter the sink node: 99
+Maximum Flow: 26
+
+Enter the source node: 5
+Enter the sink node: 88
+Maximum Flow: 10
+
+Enter the source node: 5
+Enter the sink node: 10
+Maximum Flow: 0
+
+Edmonds - Karp:
+Enter the source node: 5
+Enter the sink node: 10
+Maximum Flow: 0
+
+Dinic:
+Enter the source node: 0
+Enter the sink node: 99
+Maximum Flow: 26
+
+Enter the source node: 5
+Enter the sink node: 88
+Maximum Flow: 10
+
+Enter the source node: 90
+Enter the sink node: 3
+Maximum Flow: 0
