@@ -1,4 +1,5 @@
 mod dinic;
+mod edmonds_karp;
 
 fn main() {
     let file_content =
@@ -14,7 +15,9 @@ fn main() {
 
     let num_nodes = res[0];
     let num_edges = res[1];
+
     let mut dinic = dinic::MaxFlow::new(num_nodes);
+    let mut edmond = edmonds_karp::MaxFlow::new(num_nodes);
 
     for _ in 0..num_edges {
         let edge_info: Vec<usize> = lines
@@ -29,9 +32,23 @@ fn main() {
         let capacity = edge_info[2];
 
         dinic.add_edge(from, to, capacity.try_into().unwrap());
+        edmond.add_edge(from, to, capacity);
     }
 
     for pair in [(0, 99), (5, 88), (90, 3)] {
-        println!("Maximum flow: {}", dinic.clone().dinic(pair.0, pair.1));
+        println!(
+            "Maximum flow with dinic algorithm:\n start: {}, sink: {}, result: {}",
+            pair.0,
+            pair.1,
+            dinic.clone().dinic(pair.0, pair.1)
+        );
     }
+
+    let pair = (5, 10);
+    println!(
+        "Maximum flow with edmond_karps algorithm:\n start: {}, sink: {}, result: {}",
+        pair.0,
+        pair.1,
+        edmond.clone().edmonds_karp(pair.0, pair.1)
+    );
 }
