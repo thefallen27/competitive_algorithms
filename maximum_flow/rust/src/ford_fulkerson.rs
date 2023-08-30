@@ -53,16 +53,16 @@ impl MaxFlow {
                     .get_mut(&node)
                     .unwrap() -= augmenting_path_capacity;
 
-                if self.residual.contains_key(&prev_node)
+                if self.residual.contains_key(prev_node)
                     && self
                         .residual
-                        .get_mut(&prev_node)
+                        .get_mut(prev_node)
                         .unwrap()
                         .contains_key(&node)
                 {
                     *self
                         .residual
-                        .get_mut(&prev_node)
+                        .get_mut(prev_node)
                         .unwrap()
                         .get_mut(&node)
                         .unwrap() += augmenting_path_capacity;

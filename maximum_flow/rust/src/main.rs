@@ -11,18 +11,18 @@ fn main() {
         .next()
         .unwrap()
         .split_whitespace()
-        .map(|x| x.parse::<usize>().unwrap())
+        .map(|x| x.parse::<i32>().unwrap())
         .collect::<Vec<_>>();
 
-    let num_nodes = res[0];
+    let _num_nodes = res[0];
     let num_edges = res[1];
 
-    let mut dinic = dinic::MaxFlow::new(num_nodes);
-    let mut edmond = edmonds_karp::MaxFlow::new(num_nodes);
+    let mut dinic = dinic::MaxFlow::new();
+    let mut edmond = edmonds_karp::MaxFlow::new();
     let mut fulkerson = ford_fulkerson::MaxFlow::new();
 
     for _ in 0..num_edges {
-        let edge_info: Vec<usize> = lines
+        let edge_info: Vec<i32> = lines
             .next()
             .unwrap()
             .split_whitespace()
@@ -33,9 +33,9 @@ fn main() {
         let to = edge_info[1];
         let capacity = edge_info[2];
 
-        dinic.add_edge(from, to, capacity.try_into().unwrap());
+        dinic.add_edge(from, to, capacity);
         edmond.add_edge(from, to, capacity);
-        fulkerson.add_edge(from as i32, to as i32, capacity as i32);
+        fulkerson.add_edge(from, to, capacity);
     }
 
     for pair in [(0, 99), (5, 88), (90, 3)] {
@@ -55,12 +55,10 @@ fn main() {
         edmond.clone().edmonds_karp(pair.0, pair.1)
     );
 
-    for pair in [(0, 99), (5, 88), (5, 10)] {
-        println!(
-            "Maximum flow with ford_fulkerson algorithm:\n start: {}, sink: {}, result: {}",
-            pair.0,
-            pair.1,
-            fulkerson.clone().ford_fulkerson(pair.0, pair.1)
-        );
-    }
+    println!(
+        "Maximum flow with ford_fulkerson algorithm:\n start: {}, sink: {}, result: {}",
+        pair.0,
+        pair.1,
+        fulkerson.clone().ford_fulkerson(pair.0, pair.1)
+    );
 }

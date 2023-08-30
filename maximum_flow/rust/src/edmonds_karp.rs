@@ -1,97 +1,81 @@
+use std::collections::HashMap;
 use std::collections::VecDeque;
-
-#[derive(Debug, Clone, Copy)]
-pub struct Edge {
-    to: usize,
-    flow: i32,
-    capacity: i32,
-    reverse_edge_index: usize,
-}
 
 #[derive(Clone, Debug)]
 pub struct MaxFlow {
-    pub graph: Vec<Vec<Edge>>,
-    vertices: usize,
+    pub graph: HashMap<i32, HashMap<i32, i32>>,
 }
 
 impl MaxFlow {
-    pub fn new(vertices: usize) -> Self {
+    pub fn new() -> Self {
         MaxFlow {
-            graph: vec![vec![]; vertices],
-            vertices,
+            graph: HashMap::new(),
         }
     }
+    pub fn add_edge(&mut self, from: i32, to: i32, capacity: i32) {
+        self.graph
+            .entry(from)
+            .or_insert(HashMap::new())
+            .insert(to, capacity);
+        self.graph
+            .entry(to)
+            .or_insert(HashMap::new())
+            .insert(from, 0);
+    }
 
-    pub fn add_edge(&mut self, from: usize, to: usize, capacity: usize) {
-        let index = self.graph[to].len();
-        self.graph[from].push(Edge {
-            to,
-            flow: 0,
-            capacity: capacity as i32,
-            reverse_edge_index: index,
-        });
+    pub fn edmonds_karp(&mut self, source: i32, target: i32) -> i32 {
+        let mut max_flow = 0;
 
-        let index = self.graph[from].len() - 1;
-        self.graph[to].push({
-            Edge {
-                to: from,
-                flow: 0,
-                capacity: 0,
-                reverse_edge_index: index,
+        let mut parent = HashMap::new();
+        while self.bfs(&mut parent, source, target) {
+            let mut path_flow = std::i32::MAX;
+            let mut s = target;
+
+            while s != source {
+                let &prev = parent.get(&s).unwrap();
+                path_flow = std::cmp::min(path_flow, self.graph[&prev][&s]);
+                s = prev;
             }
-        });
-    }
 
-    pub fn edmonds_karp(&mut self, source: usize, sink: usize) -> i32 {
-        let mut maximum_flow = 0;
+            max_flow += path_flow;
 
-        let mut flow = self.augmenting_path(source, sink);
-        while flow > 0 {
-            maximum_flow += flow;
-
-            flow = self.augmenting_path(source, sink);
+            let mut v = target;
+            while v != source {
+                let &u = parent.get(&v).unwrap();
+                *self.graph.get_mut(&u).unwrap().get_mut(&v).unwrap() -= path_flow;
+                *self.graph.get_mut(&v).unwrap().get_mut(&u).unwrap() += path_flow;
+                v = u;
+            }
         }
 
-        maximum_flow
+        max_flow
     }
 
-    fn augmenting_path(&mut self, source: usize, sink: usize) -> i32 {
-        let mut parent: Vec<usize> = vec![0; self.vertices];
-        let mut minimum_capacity = vec![std::i32::MAX; self.vertices];
+    fn bfs(&self, parent: &mut HashMap<i32, i32>, source: i32, target: i32) -> bool {
+        let mut visited = HashMap::new();
+        visited.insert(source, true);
 
-        let mut q: VecDeque<_> = VecDeque::new();
-        q.push_back(source);
-        parent[source] = source;
+        let mut queue = VecDeque::new();
+        queue.push_back(source);
 
-        while let Some(current) = q.pop_front() {
-            for edge in &self.graph[current] {
-                if parent[edge.to] == 0 && edge.capacity > edge.flow {
-                    parent[edge.to] = current;
+        while let Some(&node) = queue.front() {
+            queue.pop_front();
 
-                    println!("{}, {}", edge.capacity, edge.flow);
-                    minimum_capacity[edge.to] =
-                        std::cmp::min(minimum_capacity[current], edge.capacity - edge.flow);
+            if node == target {
+                return true;
+            }
 
-                    if edge.to == sink {
-                        let path_capacity = minimum_capacity[sink];
-                        let mut node = sink;
-
-                        while node != source {
-                            let previous_node = parent[node];
-                            let index = self.graph[node][0].reverse_edge_index;
-                            self.graph[previous_node][index].flow -= path_capacity;
-                            self.graph[node][0].flow += path_capacity;
-                            node = previous_node;
-                        }
-
-                        return path_capacity;
+            if let Some(neighbors) = self.graph.get(&node) {
+                for (&neighbor, &capacity) in neighbors.iter() {
+                    if !visited.contains_key(&neighbor) && capacity > 0 {
+                        parent.insert(neighbor, node);
+                        visited.insert(neighbor, true);
+                        queue.push_back(neighbor);
                     }
-
-                    q.push_back(edge.to);
                 }
             }
         }
 
-        0
+        false
     }
 }

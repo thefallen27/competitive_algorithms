@@ -1,104 +1,92 @@
+use std::collections::HashMap;
 use std::collections::VecDeque;
-
-#[derive(Debug, Clone, Copy)]
-pub struct Edge {
-    to: usize,
-    flow: i32,
-    capacity: i32,
-    reverse_edge_index: usize,
-}
 
 #[derive(Clone, Debug)]
 pub struct MaxFlow {
-    pub graph: Vec<Vec<Edge>>,
-    levels: Vec<i32>,
-    next_edge_tracking: Vec<usize>,
+    pub graph: HashMap<i32, HashMap<i32, i32>>,
 }
 
 impl MaxFlow {
-    pub fn new(vertices: usize) -> Self {
+    pub fn new() -> Self {
         MaxFlow {
-            graph: vec![vec![]; vertices],
-            levels: vec![-1; vertices],
-            next_edge_tracking: vec![0; vertices],
+            graph: HashMap::new(),
         }
     }
-
-    pub fn add_edge(&mut self, from: usize, to: usize, capacity: i32) {
-        let index = self.graph[to].len();
-        self.graph[from].push(Edge {
-            to,
-            flow: 0,
-            capacity,
-            reverse_edge_index: index,
-        });
-
-        let index = self.graph[from].len() - 1;
-        self.graph[to].push({
-            Edge {
-                to: from,
-                flow: 0,
-                capacity: 0,
-                reverse_edge_index: index,
-            }
-        });
+    pub fn add_edge(&mut self, from: i32, to: i32, capacity: i32) {
+        self.graph
+            .entry(from)
+            .or_insert(HashMap::new())
+            .insert(to, capacity);
+        self.graph
+            .entry(to)
+            .or_insert(HashMap::new())
+            .insert(from, 0);
     }
 
-    pub fn dinic(&mut self, source: usize, sink: usize) -> i32 {
-        let mut maximum_flow = 0;
+    pub fn dinic(&mut self, source: i32, target: i32) -> i32 {
+        let mut level = vec![0; self.graph.len()];
+        let mut max_flow = 0;
 
-        while self.bfs(source, sink) {
-            self.next_edge_tracking.fill(0);
-            let mut flow = self.dfs(source, sink, std::i32::MAX);
+        while self.bfs(&mut level, source, target) {
+            let mut flow = self.dfs(&level, source, target, std::i32::MAX);
             while flow > 0 {
-                maximum_flow += flow;
-
-                flow = self.dfs(source, sink, std::i32::MAX);
+                max_flow += flow;
+                flow = self.dfs(&level, source, target, std::i32::MAX);
             }
         }
 
-        maximum_flow
+        max_flow
     }
 
-    fn bfs(&mut self, source: usize, sink: usize) -> bool {
-        self.levels.fill(-1);
-        let mut q: VecDeque<_> = VecDeque::new();
-        q.push_back(source);
-        self.levels[source] = 0;
+    fn bfs(&self, level: &mut [i32], source: i32, target: i32) -> bool {
+        level.iter_mut().for_each(|l| *l = -1);
+        level[source as usize] = 0;
+        let mut queue = VecDeque::new();
+        queue.push_back(source);
 
-        while !q.is_empty() {
-            let current = q.pop_front().unwrap();
+        while let Some(node) = queue.pop_front() {
+            if node == target {
+                return true;
+            }
 
-            for edge in &self.graph[current] {
-                if self.levels[edge.to] == -1 && edge.capacity > edge.flow {
-                    self.levels[edge.to] = self.levels[current] + 1;
-                    q.push_back(edge.to);
+            if let Some(neighbors) = self.graph.get(&node) {
+                for (&neighbor, &capacity) in neighbors.iter() {
+                    if level[neighbor as usize] < 0 && capacity > 0 {
+                        level[neighbor as usize] = level[node as usize] + 1;
+                        queue.push_back(neighbor);
+                    }
                 }
             }
         }
 
-        self.levels[sink] != -1
+        false
     }
 
-    fn dfs(&mut self, current: usize, sink: usize, minimum_capacity: i32) -> i32 {
-        if current == sink {
-            return minimum_capacity;
+    fn dfs(&mut self, level: &[i32], current: i32, target: i32, flow: i32) -> i32 {
+        if current == target {
+            return flow;
         }
 
-        for i in self.next_edge_tracking[current]..self.graph[current].len() {
-            let edge = self.graph[current][i];
+        if let Some(neighbors) = self.graph.get(&current) {
+            let neighbors_clone = neighbors.clone();
+            for (&neighbor, capacity) in neighbors_clone.iter() {
+                if capacity > &mut 0 && level[neighbor as usize] == level[current as usize] + 1 {
+                    let min_capacity = std::cmp::min(flow, *capacity);
+                    let flow = self.dfs(level, neighbor, target, min_capacity);
 
-            if self.levels[edge.to] == self.levels[current] + 1 && edge.capacity > edge.flow {
-                let flow = self.dfs(
-                    edge.to,
-                    sink,
-                    std::cmp::min(minimum_capacity, edge.capacity - edge.flow),
-                );
-
-                if flow > 0 {
-                    self.graph[current][i].flow += flow;
-                    self.graph[edge.to][edge.reverse_edge_index].flow -= flow;
-                    return flow;
+                    if flow > 0 {
+                        *self
+                            .graph
+                            .get_mut(&current)
+                            .and_then(|n| n.get_mut(&neighbor))
+                            .unwrap() -= flow;
+                        *self
+                            .graph
+                            .get_mut(&neighbor)
+                            .and_then(|n| n.get_mut(&current))
+                            .unwrap() += flow;
+                        return flow;
+                    }
                 }
             }
         }
