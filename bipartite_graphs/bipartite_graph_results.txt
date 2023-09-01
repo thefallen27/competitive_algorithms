@@ -1,0 +1,8 @@
+Using input_bipartite_graphs.txt:
+The graph is not bipartite
+
+Using input_bipartite_graphs_2.txt:
+The graph is bipartite
+
+Using input_bipartite_graphs_3.txt:
+The graph is bipartite
