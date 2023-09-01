@@ -16,7 +16,7 @@ struct Edge
 class FlowNetwork
 {
 public:
-    FlowNetwork(int vertices) : vertices_(vertices), graph_(vertices), levels_(vertices), next_edge_tracking_(vertices) {}
+    FlowNetwork(int vertices) : graph_(vertices), levels_(vertices), next_edge_tracking_(vertices) {}
 
     void AddingEdge(int from, int to, int capacity)
     {
@@ -96,7 +96,6 @@ public:
 private:
     std::vector<int> levels_;
     std::vector<int> next_edge_tracking_;
-    int vertices_;
 };
 
 int main()
