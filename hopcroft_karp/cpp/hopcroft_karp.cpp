@@ -10,7 +10,7 @@ const int INF = std::numeric_limits<int>::max();
 class HopcroftKarp
 {
 public:
-    HopcroftKarp(int set_U, int set_V) : U_(set_U), V_(set_V), adjacency_(set_U),
+    HopcroftKarp(int set_U, int set_V) : U_(set_U), adjacency_(set_U),
              pair_matching_from_U_(set_U, -1), pair_matching_from_V_(set_V, -1),
              distance_from_free_nodes_(U_ + 1) {}
 
@@ -97,7 +97,7 @@ private:
         return false;
     }
 
-    int U_, V_;
+    int U_;
     std::vector<std::vector<int>> adjacency_;
     std::vector<int> pair_matching_from_U_, pair_matching_from_V_, distance_from_free_nodes_;
 };
