@@ -64,8 +64,8 @@ private:
             {
                 for (int v : adjacency_[u])
                 {
-                    if (pair_matching_from_V_[v] == -1 || (pair_matching_from_V_[v] != -1
-                        && distance_from_free_nodes_[pair_matching_from_V_[v]] == INF))
+                    if (pair_matching_from_V_[v] == -1
+                        || distance_from_free_nodes_[pair_matching_from_V_[v]] == INF)
                     {
                         int nextIndex = (pair_matching_from_V_[v] == -1 ? U_ : pair_matching_from_V_[v]);
                         distance_from_free_nodes_[nextIndex] = distance_from_free_nodes_[u] + 1;
