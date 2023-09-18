@@ -65,6 +65,7 @@ impl HopcroftKarp {
                             } else {
                                 self.pair_matching_from_v[v] as usize
                             };
+
                             self.distance_from_free_nodes[next_index] =
                                 self.distance_from_free_nodes[u] + 1;
                             q.push_back(next_index);
