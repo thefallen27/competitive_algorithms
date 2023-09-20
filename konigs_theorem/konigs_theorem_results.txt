@@ -1,0 +1,23 @@
+Output
+------
+Output a single line containing a floating point number, D, the largest minimum distance between a red and a blue egg that can be achieved. You are required to output D with absolute precision 10^−6, i.e. with at least 6 decimal places.
+
+========================
+
+We used the sample inputs from the problem and we managed to obtain the results as shown below:
+
+Sample Input 1 							Sample Output 1
+3 2 2									2.000000000000000
+0 0
+1 0
+2 0
+3 0
+
+Sample Input 2 							Sample Output 2
+4 3 3									3.000000000000000
+0 0
+1 2
+-1 2
+0 1
+-1 -1
+1 -1

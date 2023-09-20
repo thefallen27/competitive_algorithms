@@ -1,0 +1,8 @@
+Input
+------
+The input consists of the following:
+• one line containing three integers N, B, R, the number of eggs to hide N ≤ 250, the number of blueberry plants B < N and the number of redberry plants R < N;
+• B lines, each containing two integers −10^4 ≤ x, y ≤ 10^4, indicating the coordinates (x, y) of a blueberry plant;
+• R lines, each containing two integers −10^4 ≤ x, y ≤ 10^4, indicating the coordinates (x, y) of a redberry plant.
+
+The B + R plants are guaranteed to have distinct coordinates. Moreover, N is guaranteed to satisfy N ≤ B + R.
