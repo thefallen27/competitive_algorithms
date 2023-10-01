@@ -1,10 +1,22 @@
 use std::fs;
 use std::path::Path;
+use std::str::FromStr;
 
 #[derive(Debug)]
 struct Item {
     weight: usize,
     value: usize,
+}
+
+impl FromStr for Item {
+    type Err = std::num::ParseIntError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let parts: Vec<_> = s.split_whitespace().collect();
+        let value = parts[0].parse()?;
+        let weight = parts[1].parse()?;
+        Ok(Item { value, weight })
+    }
 }
 
 fn knapsack(ks_weight: usize, items: &[Item]) -> usize {
@@ -38,45 +50,37 @@ fn knapsack_dynamic(ks_weight: usize, items: &[Item]) -> usize {
 
 fn main() {
     let file = Path::new("../knapsack_input.txt");
-    let input = fs::read_to_string(file).expect("Failed to read file");
 
-    let items: Vec<(usize, Vec<Item>)> = input
-        .split("\n\n")
-        .collect::<Vec<&str>>()
-        .iter()
-        .map(|block| block.split('\n').collect::<Vec<&str>>())
-        .collect::<Vec<Vec<&str>>>()
-        .iter()
-        .map(|b| {
-            let ks_weight = b.get(1).unwrap().parse().unwrap();
-            let items = b
-                .iter()
-                .skip(2)
-                .flat_map(|l| {
-                    l.split_once(' ').map(|(first, second)| {
-                        let value = first.parse().unwrap();
-                        let weight = second.parse().unwrap();
-                        Item { value, weight }
-                    })
-                })
-                .collect();
-            (ks_weight, items)
-        })
-        .collect();
+    if let Ok(input) = fs::read_to_string(file) {
+        let items: Vec<(usize, Vec<Item>)> = input
+            .split("\n\n")
+            .map(|block| {
+                let lines: Vec<&str> = block.lines().collect();
+                let ks_weight = lines[1].parse().expect("Invalid weight");
+                let items: Vec<Item> = lines[2..]
+                    .iter()
+                    .map(|line| line.parse().expect("Invalid item"))
+                    .collect();
+                (ks_weight, items)
+            })
+            .collect();
 
-    for (index, item) in items.iter().enumerate() {
-        println!(
-            "Maximum profit with recursion for section: {}: \n{}",
-            index,
-            knapsack(item.0, &item.1)
-        );
-    }
+        for (index, item) in items.iter().enumerate() {
+            println!(
+                "Maximum profit with recursion for section: {}: \n{}",
+                index,
+                knapsack(item.0, &item.1)
+            );
+        }
 
-    for (index, item) in items.iter().enumerate() {
-        println!(
-            "Maximum profit with dynamic programming for section: {}: \n{}",
-            index,
-            knapsack_dynamic(item.0, &item.1)
-        );
+        for (index, item) in items.iter().enumerate() {
+            println!(
+                "Maximum profit with dynamic programming for section: {}: \n{}",
+                index,
+                knapsack_dynamic(item.0, &item.1)
+            );
+        }
+    } else {
+        eprintln!("Failed to read file: {:?}", file);
     }
 }
