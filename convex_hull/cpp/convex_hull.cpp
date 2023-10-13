@@ -93,7 +93,6 @@ ConvexHull(std::vector<Point>& points)
     std::stack<Point> stack_point;
     stack_point.push(points[0]);
     stack_point.push(points[1]);
-    stack_point.push(points[2]);
 
     for (int i = 3; i < m; i++)
     {
