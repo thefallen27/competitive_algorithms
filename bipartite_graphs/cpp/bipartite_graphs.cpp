@@ -8,7 +8,7 @@ bool
 IsBipartite(const std::vector<std::vector<int>>& graph, int start)
 {
     size_t n = graph.size();
-    std::vector<int> colour(n, -1); // -1: uncolored, 0: colour A, 1: colour B
+    std::vector<int> colour(n, -1); // -1: uncoloured, 0: colour A, 1: colour B
     std::queue<int> q;
     q.push(start);
     colour[start] = 0;
