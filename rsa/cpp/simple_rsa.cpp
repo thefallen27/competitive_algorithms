@@ -103,7 +103,7 @@ RSAEncryption(int64_t message, int64_t e, int64_t n)
 }
 
 int64_t
-RSADecryptionCRT(int64_t ciphertext, int64_t d, int64_t n, int64_t p, int64_t q)
+RSADecryptionCRT(int64_t ciphertext, int64_t d, int64_t p, int64_t q)
 {
     int64_t dp = d % (p - 1);
     int64_t dq = d % (q - 1);
@@ -145,17 +145,14 @@ int main()
 
     std::cout << std::endl;
 
-    std::cout << "Decrypted message: ";
     std::string decrypted_msg;
     for (int64_t encrypted_letter : encrypted_characters)
     {
-        int64_t decrypted_letter = RSADecryptionCRT(encrypted_letter, d, n, p, q);
+        int64_t decrypted_letter = RSADecryptionCRT(encrypted_letter, d, p, q);
         decrypted_msg += static_cast<char>(decrypted_letter);
-        std::cout << decrypted_letter << " ";
     }
-    std::cout << std::endl;
 
-    std::cout << "Decrypted text: " << decrypted_msg << std::endl;
+    std::cout << "Decrypted message: " << decrypted_msg << std::endl;
 
     return 0;
 }
