@@ -7,8 +7,7 @@ d = 398319
 e = 65537
 Enter the message to encrypt: my name is inigo montoya
 Encrypted message: 2991655 415508 3017209 2829562 663722 2991655 3440886 3017209 2904844 1205584 3017209 2904844 2829562 2904844 875177 2399521 3017209 2991655 2399521 2829562 4800732 2399521 415508 663722
-Decrypted message: 109 121 32 110 97 109 101 32 105 115 32 105 110 105 103 111 32 109 111 110 116 111 121 97
-Decrypted text: my name is inigo montoya
+Decrypted message: my name is inigo montoya
 
 p = 3593
 q = 4349
@@ -17,8 +16,7 @@ d = 2146801
 e = 65537
 Enter the message to encrypt: phrasing boom
 Encrypted message: 3765660 15120251 1330319 5761930 5535811 13664772 8715409 15507834 12522392 9669714 3900795 3900795 15231023
-Decrypted message: 112 104 114 97 115 105 110 103 32 98 111 111 109
-Decrypted text: phrasing boom
+Decrypted message: phrasing boom
 
 =========================
 openssl_rsa:

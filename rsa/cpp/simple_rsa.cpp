@@ -145,17 +145,14 @@ int main()
 
     std::cout << std::endl;
 
-    std::cout << "Decrypted message: ";
     std::string decrypted_msg;
     for (int64_t encrypted_letter : encrypted_characters)
     {
         int64_t decrypted_letter = RSADecryptionCRT(encrypted_letter, d, n, p, q);
         decrypted_msg += static_cast<char>(decrypted_letter);
-        std::cout << decrypted_letter << " ";
     }
-    std::cout << std::endl;
 
-    std::cout << "Decrypted text: " << decrypted_msg << std::endl;
+    std::cout << "Decrypted message: " << decrypted_msg << std::endl;
 
     return 0;
 }
