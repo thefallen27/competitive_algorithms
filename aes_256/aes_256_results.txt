@@ -1,0 +1,9 @@
+C++:
+----
+Enter the text to encrypt: You either die a hero, or you live long enough to see yourself become the villain
+Ciphertext: FDA8041398AF82BA17E526C1D5BF067A4D011833AEEDB3B652D45100B2F7092D106630E1D3775D1C6260652B4D4EB3829270C981529C81AFB3C0E1801D402BD997102896EB4029322EFEB1D792FB282FE7A93BAB69CF0DE2A27B8ADFB9E80B5C
+Decrypted text: You either die a hero, or you live long enough to see yourself become the villain
+
+Enter the text to encrypt: You either die a hero, or you live long enough to see yourself become the villain
+Ciphertext: 7DC42CA7F968D325B1F6DA6675C84C3A4A4EFFE22B67BC4723974984B5E99C296283D379B16316EE70503292C92A30F01C2AA65F0DCB53A2BFEB3EF174179547229F16DA7A39AFD785DD95F4F3046595BB05D1059A6A2A84679E0800FFD1695B
+Decrypted text: You either die a hero, or you live long enough to see yourself become the villain
