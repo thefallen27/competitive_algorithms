@@ -1,82 +1,82 @@
+#include <iomanip>
 #include <iostream>
-#include <memory>
-#include <openssl/crypto.h> 
-#include <openssl/rsa.h>
-#include <openssl/pem.h>
-#include <openssl/err.h>
-#include <string_view>
-#include <vector>
+#include <openssl/aes.h>
+#include <openssl/rand.h>
+#include <sstream>
 #include <string>
-
-struct BNDeleter
+#include <vector>
+ 
+std::vector<unsigned char> 
+AESEncrypt(const AES_KEY& encrypt_key, const std::vector<unsigned char>& iv, const std::vector<unsigned char>& plaintext)
 {
-    void operator()(BIGNUM* bn) const { BN_free(bn); }
-};
-
-struct RSAKeyDeleter
+    const size_t block_size = 16;
+    size_t plaintext_length = plaintext.size();
+    size_t number_of_blocks = (plaintext_length + block_size - 1) / block_size;
+    std::vector<unsigned char> ciphertext(number_of_blocks * block_size);
+    std::vector<unsigned char> iv_copy(iv);
+ 
+    AES_cbc_encrypt(plaintext.data(), ciphertext.data(), plaintext_length, &encrypt_key, iv_copy.data(), AES_ENCRYPT);
+ 
+    return ciphertext;
+}
+ 
+std::vector<unsigned char>
+AESDecrypt(const AES_KEY& decrypt_key, const std::vector<unsigned char>& iv, const std::vector<unsigned char>& ciphertext)
 {
-    void operator()(RSA* rsa) const { RSA_free(rsa); }
-};
-
-struct BIODeleter
+    std::vector<unsigned char> plaintext(ciphertext.size());
+    std::vector<unsigned char> iv_copy(iv);
+ 
+    AES_cbc_encrypt(ciphertext.data(), plaintext.data(), plaintext.size(), &decrypt_key, iv_copy.data(), AES_DECRYPT);
+ 
+    return plaintext;
+}
+ 
+std::string
+ToHex(const std::vector<unsigned char>& data)
 {
-    void operator()(BIO* bio) const { BIO_free_all(bio); }
-};
-
+    std::stringstream ss;
+    ss << std::hex << std::uppercase << std::setfill('0');
+    for (const auto& byte : data)
+	{
+        ss << std::setw(2) << static_cast<int>(byte);
+    }
+ 
+    return ss.str();
+}
+ 
 int main()
 {
-    using BN_ptr = std::unique_ptr<BIGNUM, BNDeleter>;
-    using RSA_ptr = std::unique_ptr<RSA, RSAKeyDeleter>;
-    using BIO_ptr = std::unique_ptr<BIO, BIODeleter>;
+    std::string input_message;
+    std::cout << "Enter the text to encrypt: ";
+    std::getline(std::cin, input_message);
 
-    int rsa_size = 2048;
-    unsigned long e = RSA_F4;
-
-    RSA_ptr rsa_key(RSA_new());
-    BN_ptr big_number(BN_new());
-    if (!BN_set_word(big_number.get(), e) || !RSA_generate_key_ex(rsa_key.get(), rsa_size, big_number.get(), nullptr))
-    {
-        std::cerr << "Error generating RSA key." << std::endl;
+    std::vector<unsigned char> plaintext(input_message.begin(), input_message.end());
+    std::vector<unsigned char> key(32); // 256 bits for AES-256 random key
+    std::vector<unsigned char> iv(AES_BLOCK_SIZE);
+ 
+    if (!RAND_bytes(key.data(), key.size()) || !RAND_bytes(iv.data(), iv.size()))
+	{
+        std::cerr << "Error generating random key or initialization vector." << std::endl;
         return 1;
     }
-
-    std::string message;
-    std::cout << "Enter a message to encrypt and decrypt: ";
-    std::getline(std::cin, message);
-
-    std::vector<unsigned char> encrypted_message(RSA_size(rsa_key.get()));
-    int encrypted_length = RSA_public_encrypt(message.size(), reinterpret_cast<const unsigned char*>(message.data()),
-        encrypted_message.data(), rsa_key.get(), RSA_PKCS1_PADDING);
-    if (encrypted_length == -1)
-    {
-        std::cerr << "Error encrypting message: " << ERR_error_string(ERR_get_error(), nullptr) << std::endl;
+ 
+    AES_KEY encrypt_key, decrypt_key;
+    if (AES_set_encrypt_key(key.data(), 256, &encrypt_key) < 0
+	 || AES_set_decrypt_key(key.data(), 256, &decrypt_key) < 0)
+	{
+        std::cerr << "Error setting encryption or decryption key." << std::endl;
         return 1;
     }
-
-    OPENSSL_cleanse(&message[0], message.size());
-
-    std::vector<unsigned char> decrypted_message(RSA_size(rsa_key.get()));
-    int decrypted_length = RSA_private_decrypt(encrypted_length, encrypted_message.data(),
-        decrypted_message.data(), rsa_key.get(), RSA_PKCS1_PADDING);
-
-    if (decrypted_length == -1)
-    {
-        OPENSSL_cleanse(encrypted_message.data(), encrypted_length);
-        std::cerr << "Error decrypting message: " << ERR_error_string(ERR_get_error(), nullptr) << std::endl;
-        return 1;
-    }
-
-    std::cout << "Encrypted message: ";
-    for (int i = 0; i < encrypted_length; ++i)
-    {
-        printf("%02x", encrypted_message[i]);
-    }
-
-    std::cout << std::endl << "Decrypted message: "
-        << std::string_view(reinterpret_cast<char*>(decrypted_message.data()), decrypted_length)
-        << std::endl;
-
-    OPENSSL_cleanse(decrypted_message.data(), decrypted_length);
-
+ 
+    std::vector<unsigned char> ciphertext = AESEncrypt(encrypt_key, iv, plaintext);
+    std::string hex_ciphertext = ToHex(ciphertext);
+    std::cout << "Ciphertext: " << hex_ciphertext << std::endl;
+ 
+    std::vector<unsigned char> decrypted_text = AESDecrypt(decrypt_key, iv, ciphertext);
+    std::string output_text(decrypted_text.begin(), decrypted_text.end());
+    std::cout << "Decrypted text: " << output_text << std::endl;
+ 
+    OPENSSL_cleanse(key.data(), key.size());
+ 
     return 0;
 }
