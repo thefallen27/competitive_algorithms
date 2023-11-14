@@ -13,5 +13,8 @@ fn main() {
     let elapsed_time = end_time.duration_since(start_time);
 
     // Print the elapsed time in milliseconds
-    println!("Elapsed time: {} milliseconds", elapsed_time.as_secs_f64() * 1000.0);
+    println!(
+        "Elapsed time: {} milliseconds",
+        elapsed_time.as_secs_f64() * 1000.0
+    );
 }
