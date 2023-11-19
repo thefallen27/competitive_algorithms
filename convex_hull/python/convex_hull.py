@@ -27,9 +27,10 @@ def convex_hull(points):
     if n < 3:
         return []
 
-    # Find the point with the lowest y-coordinate (and leftmost if tied)
+    # Finds the point with the lowest y-coordinate (and lowest x-coordinate if the same)
     y_minimum = points[0].y
     minimum_index = 0
+
     for i in range(1, n):
         y = points[i].y
         if y < y_minimum or (y == y_minimum and points[i].x < points[minimum_index].x):
@@ -42,25 +43,14 @@ def convex_hull(points):
     p0 = points[0]
     points[1:] = sorted(points[1:], key=lambda p: (atan2(p.y - p0.y, p.x - p0.x), p.x, p.y))
 
-    # Remove collinear points
-    m = 1
-    for i in range(1, n):
-        while i < n - 1 and orientation(p0, points[i], points[i + 1]) == 0:
-            i += 1
-        points[m] = points[i]
-        m += 1
+    stack = [points[0], points[1]]
 
-    if m < 3:
-        return []
-
-    stack = [points[0], points[1], points[2]]
-
-    for i in range(3, m):
-        while orientation(next_to_top(stack), stack[-1], points[i]) != 2:
+    for i in range(2, n):
+        while len(stack) > 1 and orientation(next_to_top(stack), stack[-1], points[i]) != 2:
             stack.pop()
         stack.append(points[i])
 
-    # Add the first point again to connect the convex hull
+    # Add the first point again to connect the convex hull for the drawing
     stack.append(points[0])
 
     return stack
@@ -89,7 +79,10 @@ if __name__ == "__main__":
         convex_hull_points = convex_hull(points)
 
         print("Convex Hull points:")
-        for p in convex_hull_points:
+        # Last element is removed as it is guaranteed to be the same
+        # as the first one; it was added only for the drawing part of the
+        # convex hull
+        for p in convex_hull_points[:-1]: 
             print(p.x, p.y)
 
         plot_convex_hull(points, convex_hull_points)
